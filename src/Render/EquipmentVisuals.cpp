@@ -206,13 +206,13 @@ void Equipment_Draw(int entity, int stage) {
             }
             unsigned int priorBits; memcpy(&priorBits,&prior,sizeof(priorBits));
             float zero[3]{};
-            BMD_Animation(model,(int)g_BoneScratch,frame,priorBits,mesh.partState.PriorAction,(unsigned int *)zero,zero,1,1);
+            BMD_Animation(model,reinterpret_cast<float*>(g_BoneScratch),frame,priorBits,mesh.partState.PriorAction,(unsigned int *)zero,zero,1,1);
             drawAlpha=owner.Alpha;
         }
         if (drawAlpha<=_DAT_005524f8) continue;
         _DAT_005597c8 = mesh.lod;
         float zero[3] = {}, bounds[15];
-        Skeleton_Transform(model, (int)g_BoneScratch, zero, zero, bounds, mesh.translate);
+        Skeleton_Transform(model, reinterpret_cast<float*>(g_BoneScratch), zero, zero, bounds, mesh.translate);
         // El objeto mínimo es local: los materiales pueden escribir UV/escala.
         alignas(float) char object[sizeof(mesh.object)];
         memcpy(object, mesh.object, sizeof(object));

@@ -653,7 +653,7 @@ LAB_00501cb5:
                     if ((&DAT_0839bcb2)[iVar14*0xde] != 0xaf) {
                         // Pasar la dirección real de DAT_0839bcb0, no el literal `0x839bcb0` del
                         // binario fuente (en este build el símbolo vive en otra dirección).
-                        Particle_PathUpdate((int)pcVar3, iVar14, (int)(uintptr_t)&DAT_0839bcb0, 0x28);
+                        Particle_PathUpdate(AsObject(pcVar3), iVar14, &DAT_0839bcb0, 0x28);
                     }
                     Matrix_BuildFromEuler((float *)(&DAT_0839bccc + iVar14*0x6f), (float *)(&DAT_0839bd40 + iVar2));
 
@@ -740,26 +740,26 @@ LAB_00501cb5:
                         uVar8 = _rand(); uVar8 &= 0x800001ff;
                         bVar20 = (uVar8 == 0);
                         if ((int)uVar8 < 0) bVar20 = ((uVar8-1|0xfffffe00)==0xffffffff);
-                        if (bVar20) PlayBuffer(0xc, (int)pcVar3, 0);
+                        if (bVar20) PlayBuffer(0xc, AsObject(pcVar3), 0);
                         uVar8 = _rand(); uVar8 &= 0x800001ff;
                         bVar20 = (uVar8 == 0);
                         if ((int)uVar8 < 0) bVar20 = ((uVar8-1|0xfffffe00)==0xffffffff);
-                        if (bVar20) PlayBuffer(0xd, (int)pcVar19, 0);
+                        if (bVar20) PlayBuffer(0xd, AsObject(pcVar19), 0);
                     } else if (sVar5 == 0xb0) {
                         uVar8 = _rand(); uVar8 &= 0x800000ff;
                         bVar20 = (uVar8 == 0);
                         if ((int)uVar8 < 0) bVar20 = ((uVar8-1|0xffffff00)==0xffffffff);
-                        if (bVar20) PlayBuffer(0xe, (int)pcVar19, 0);
+                        if (bVar20) PlayBuffer(0xe, AsObject(pcVar19), 0);
                     } else if ((sVar5 == 0xb8) && ((unsigned char)DAT_0838bc70[uStack_48] == 0x01)) {
                         uVar8 = _rand(); uVar8 &= 0x8000007f;
                         bVar20 = (uVar8 == 0);
                         if ((int)uVar8 < 0) bVar20 = ((uVar8-1|0xffffff80)==0xffffffff);
-                        if (bVar20) PlayBuffer(0x6d, (int)pcVar19, 0);
+                        if (bVar20) PlayBuffer(0x6d, AsObject(pcVar19), 0);
                     }
                 }
             } else {
                 // DAT_083a3ff0 != 0 && type == 0x12d: thunder cloud — full animation
-                SetAction((int)pcVar3, 7);
+                SetAction(AsObject(pcVar3), 7);
                 *(unsigned char *)((int)pvVar9 + 0xa0) = (&DAT_0839bdb5)[iVar2];
                 BMD__PlayAnimation(pvVar9,
                              (float *)(&DAT_0839bdb8 + iVar2),
@@ -791,7 +791,7 @@ LAB_00501cb5:
             }
         }
 
-        Alpha((int)pcVar3);
+        Alpha(AsObject(pcVar3));
         uVar8 = 0;  // return value unused; Alpha returns void
         iVar12 = gMapManager.GetCurrentMap();
 

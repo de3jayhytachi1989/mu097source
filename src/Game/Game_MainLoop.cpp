@@ -408,7 +408,7 @@ void __cdecl Game_MainLoop(HDC param_1)
     // DAT_055ca018 y ya bloquea Game_MainLoop al inicio.
     #if 0
     if (DAT_083a7c48 != '\0' && SceneFlag == 5) {
-        if (CWsctlc_GetSocket(((int)(uintptr_t)SocketClient)) == -1) {
+        if (CWsctlc_GetSocket(reinterpret_cast<uintptr_t>(SocketClient)) == -1) {
             if (DAT_083a7c58 == 0) {
                 DAT_083a7c58 = 1;
                 CErrorReport_Write(&DAT_055c9bf0, "> Connection closed...");
@@ -466,7 +466,7 @@ static void Game_TickAmbientAudio()
     // default (apagada). Para tener música en el login alcanza con dejar un mp3
     // con ese nombre. MuTheme es el Lorencia.mp3 del pack (mismo MD5).
     if (SceneFlag == 2)
-        Music_PlayTrack((DWORD)(uintptr_t)"Data\\Music\\MuTheme.mp3", 0);
+        Music_PlayTrack("Data\\Music\\MuTheme.mp3", 0);
 
     if (SceneFlag != 5) return;
 

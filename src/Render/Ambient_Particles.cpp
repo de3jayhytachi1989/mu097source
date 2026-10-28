@@ -282,10 +282,10 @@ switchD_caseD_2:
 
             // Despawn if out-of-type or expired
             if (((sVar5 < 0xb5) || (0xbf < sVar5)) && ((int)puVar9[-0x22] < 1)) {
-                SetAction((int)(puVar9 + -0x3a), 0);
+                SetAction(AsObject((puVar9 + -0x3a)), 0);
             } else {
-                SetAction((int)(puVar9 + -0x3a), (unsigned int)(sVar5 == 0xb2));
-                Particle_PathUpdate((int)(puVar9 + -0x3a), local_20, (int)(uintptr_t)DAT_083a2e90, 10);
+                SetAction(AsObject((puVar9 + -0x3a)), (unsigned int)(sVar5 == 0xb2));
+                Particle_PathUpdate(AsObject(puVar9 + -0x3a), local_20, DAT_083a2e90, 10);
                 Matrix_BuildFromEuler((float *)(puVar9 + -0x33), (float *)(puVar9 + -0x16));
 
                 uVar6 = _rand();
@@ -376,7 +376,7 @@ skip_decrement:
                     if ((int)uVar6 < 0)
                         bVar10 = ((uVar6 - 1 | 0xffffff00) == 0xffffffff);
                     if (bVar10)
-                        PlayBuffer(0xf, (int)(puVar9 + -0x3a), 0);
+                        PlayBuffer(0xf, AsObject((puVar9 + -0x3a)), 0);
                 }
             }
 
@@ -397,7 +397,7 @@ skip_decrement:
                 }
             }
 
-            Alpha((int)(puVar9 + -0x3a));  // commit particle state
+            Alpha(AsObject(puVar9 + -0x3a)); // Actualiza el alpha del objeto del pool.
             iVar8 = gMapManager.GetCurrentMap();
         }
 
